@@ -149,6 +149,31 @@ Los tests generan logs informativos:
 - 📝 Datos generados
 - 📄 Información de páginas
 
+## 🔗 Repositorio GitHub
+
+Este proyecto está configurado para subirse a GitHub:
+
+- **Usuario**: Tommytaz2001
+- **Email**: tommytas.apolinario@gmail.com
+- **Repositorio**: [Prueba-automatizacion-playwright](https://github.com/Tommytaz2001/Prueba-automatizacion-playwright)
+
+### Subir a GitHub
+
+#### Opción 1: Script Automático (Recomendado)
+```bash
+.\conectar-github.ps1
+```
+
+#### Opción 2: Manual
+```bash
+git remote add origin https://github.com/Tommytaz2001/Prueba-automatizacion-playwright.git
+git push -u origin master
+```
+
+📖 **Instrucciones detalladas**: Ver archivo `INSTRUCCIONES_GIT.md`
+
+---
+
 ## 🤝 Contribuir
 
 1. Crear una nueva rama
@@ -177,6 +202,6 @@ Este proyecto utiliza las siguientes tecnologías y recursos:
 
 ---
 
-## �📄 Licencia
+## �� Licencia
 
 ISC
