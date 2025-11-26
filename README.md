@@ -111,15 +111,6 @@ test-results/screenshots-temp/
 
 Formato: `{nombre-test}_{fase}_{timestamp}.png`
 
-## 🎯 Patrón Page Object Model (POM)
-
-Cada página tiene su propio archivo con:
-- **Locators**: Selectores de elementos
-- **Métodos**: Acciones que se pueden realizar
-- **Validaciones**: Verificaciones de estado
-
-
-## 🔧 Configuración
 
 ### Datos de Prueba
 
@@ -140,15 +131,6 @@ datosFormularioContacto: {
 - **Correo**: Se genera con timestamp único
 
 
-## 📝 Logs
-
-Los tests generan logs informativos:
-- ✅ Acciones exitosas
-- ℹ️ Información
-- ❌ Errores
-- 📝 Datos generados
-- 📄 Información de páginas
-
 ## 🔗 Repositorio GitHub
 
 Este proyecto está configurado para subirse a GitHub:
@@ -157,29 +139,6 @@ Este proyecto está configurado para subirse a GitHub:
 - **Email**: tommytas.apolinario@gmail.com
 - **Repositorio**: [Prueba-automatizacion-playwright](https://github.com/Tommytaz2001/Prueba-automatizacion-playwright)
 
-### Subir a GitHub
-
-#### Opción 1: Script Automático (Recomendado)
-```bash
-.\conectar-github.ps1
-```
-
-#### Opción 2: Manual
-```bash
-git remote add origin https://github.com/Tommytaz2001/Prueba-automatizacion-playwright.git
-git push -u origin master
-```
-
-📖 **Instrucciones detalladas**: Ver archivo `INSTRUCCIONES_GIT.md`
-
----
-
-## 🤝 Contribuir
-
-1. Crear una nueva rama
-2. Hacer cambios
-3. Ejecutar tests
-4. Crear Pull Request
 
 ## � Referencias y Documentación
 
@@ -195,13 +154,5 @@ Este proyecto utiliza las siguientes tecnologías y recursos:
 - **[Allure Report](https://docs.qameta.io/allure/)** - Integración de reportes avanzados
 - **[TypeScript Handbook](https://www.typescriptlang.org/docs/)** - Guía de TypeScript
 
-### Implementaciones Específicas
-- **Capturas de Pantalla**: Implementadas usando `page.screenshot()` de Playwright
-- **Page Object Model**: Patrón de diseño para mantener el código organizado y reutilizable
-- **Generación de Datos**: Funciones personalizadas para generar cédulas y correos aleatorios
-
 ---
 
-## �� Licencia
-
-ISC
