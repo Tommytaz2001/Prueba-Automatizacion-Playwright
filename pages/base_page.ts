@@ -1,8 +1,6 @@
 import { Page } from '@playwright/test';
 
-/**
- * Página Base con métodos comunes para todos los Page Objects
- */
+// Clase base para reutilizar métodos comunes en todas las páginas
 export class BasePage {
   readonly page: Page;
 
@@ -10,23 +8,17 @@ export class BasePage {
     this.page = page;
   }
 
-  /**
-   * Navegar a una URL específica
-   */
+  // Navegar a una URL
   async irA(url: string) {
     await this.page.goto(url);
   }
 
-  /**
-   * Obtener la URL actual
-   */
+  // Obtener URL actual
   obtenerUrl(): string {
     return this.page.url();
   }
 
-  /**
-   * Esperar que la navegación se complete
-   */
+  // Esperar a que termine de cargar la página
   async esperarCargaCompleta() {
     await this.page.waitForLoadState('networkidle');
   }

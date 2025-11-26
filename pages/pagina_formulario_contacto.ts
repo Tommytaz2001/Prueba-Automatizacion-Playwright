@@ -1,9 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base_page';
 
-/**
- * Page Object para el Formulario de Contacto
- */
+// Formulario de contacto
 export class PaginaFormularioContacto extends BasePage {
   readonly inputNombres: Locator;
   readonly inputCedula: Locator;
@@ -14,7 +12,6 @@ export class PaginaFormularioContacto extends BasePage {
   constructor(page: Page) {
     super(page);
     
-    // Definir locators
     this.inputNombres = page.getByRole('textbox', { name: 'Nombres' });
     this.inputCedula = page.getByRole('textbox', { name: 'Cédula' });
     this.inputTelefono = page.getByRole('textbox', { name: 'Teléfono' });
@@ -22,9 +19,6 @@ export class PaginaFormularioContacto extends BasePage {
     this.checkboxAutorizacion = page.getByRole('checkbox', { name: 'Al dar clic, autorizas el uso' });
   }
 
-  /**
-   * Llenar el formulario de contacto con los datos proporcionados
-   */
   async llenarFormulario(datos: {
     nombres: string;
     cedula: string;
@@ -37,16 +31,11 @@ export class PaginaFormularioContacto extends BasePage {
     await this.inputCorreo.fill(datos.correo);
   }
 
-  /**
-   * Aceptar la autorización de uso de datos
-   */
   async aceptarAutorizacion() {
     await this.checkboxAutorizacion.check();
   }
 
-  /**
-   * Completar todo el formulario de contacto
-   */
+  // Llena todo el formulario y acepta la autorización
   async completarFormulario(datos: {
     nombres: string;
     cedula: string;
@@ -57,9 +46,6 @@ export class PaginaFormularioContacto extends BasePage {
     await this.aceptarAutorizacion();
   }
 
-  /**
-   * Verificar si el checkbox de autorización está marcado
-   */
   async estaAutorizacionMarcada(): Promise<boolean> {
     return await this.checkboxAutorizacion.isChecked();
   }

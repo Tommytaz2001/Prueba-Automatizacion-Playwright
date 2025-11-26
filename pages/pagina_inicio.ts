@@ -1,9 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base_page';
 
-/**
- * Page Object para la Página de Inicio de Xtrim
- */
+// Página de inicio de Xtrim
 export class PaginaInicio extends BasePage {
   readonly botonTeLlamamos: Locator;
   readonly botonCerrarModalWhatsapp: Locator;
@@ -11,28 +9,19 @@ export class PaginaInicio extends BasePage {
   constructor(page: Page) {
     super(page);
     
-    // Definir locators
     this.botonTeLlamamos = page.getByRole('link', { name: 'k Te llamamos' });
     this.botonCerrarModalWhatsapp = page.getByText('×').first();
   }
 
-  /**
-   * Navegar a la página de inicio de Xtrim
-   */
   async irAPaginaInicio() {
     await this.page.goto('https://www.xtrim.com.ec');
   }
 
-  /**
-   * Hacer clic en el botón "Te llamamos" para abrir el formulario de contacto
-   */
   async abrirFormularioContacto() {
     await this.botonTeLlamamos.click();
   }
 
-  /**
-   * Cerrar el modal promocional de WhatsApp que aparece al cargar la página
-   */
+  // Cierra el modal de WhatsApp que aparece al cargar
   async cerrarModalWhatsapp() {
     try {
       await this.page.waitForTimeout(2000);
@@ -40,15 +29,15 @@ export class PaginaInicio extends BasePage {
       if (await this.botonCerrarModalWhatsapp.isVisible({ timeout: 3000 })) {
         await this.botonCerrarModalWhatsapp.click();
         await this.page.waitForTimeout(500);
-        console.log('✅ Modal de WhatsApp cerrado exitosamente');
+        console.log('✅ Modal de WhatsApp cerrado');
         return;
       }
       
-      // Alternativa: Intentar con tecla Escape
+      // Si no funciona, intento con Escape
       await this.page.keyboard.press('Escape');
-      console.log('✅ Modal cerrado con tecla Escape');
+      console.log('✅ Modal cerrado con Escape');
     } catch (error) {
-      console.log('ℹ️ No hay modal para cerrar o ya está cerrado');
+      console.log('ℹ️ No hay modal o ya está cerrado');
     }
   }
 }

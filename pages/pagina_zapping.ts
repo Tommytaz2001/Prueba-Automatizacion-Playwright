@@ -1,9 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base_page';
 
-/**
- * Page Object para la Página Zapping SVA de Xtrim
- */
+// Página Zapping SVA
 export class PaginaZapping extends BasePage {
   readonly botonVerMas: Locator;
   readonly botonCerrarModal: Locator;
@@ -15,7 +13,6 @@ export class PaginaZapping extends BasePage {
   constructor(page: Page) {
     super(page);
     
-    // Definir locators
     this.botonVerMas = page.getByText('Ver más');
     this.botonCerrarModal = page.getByLabel('', { exact: true }).getByRole('button');
     this.comboboxCedula = page.getByRole('combobox').first();
@@ -24,41 +21,29 @@ export class PaginaZapping extends BasePage {
     this.inputCorreo = page.getByRole('textbox', { name: 'Ingrese su correo electrónico' });
   }
 
-  /**
-   * Navegar a la página Zapping SVA
-   */
   async irAPaginaZapping() {
     await this.page.goto('https://zappingsva.xtrim.com.ec/');
   }
 
-  /**
-   * Hacer clic en el botón "Ver más"
-   */
   async clickVerMas() {
     await this.botonVerMas.click();
   }
 
-  /**
-   * Cerrar el modal que aparece después de hacer clic en "Ver más"
-   */
   async cerrarModal() {
     try {
       await this.botonCerrarModal.waitFor({ state: 'visible', timeout: 5000 });
       await this.botonCerrarModal.click();
       await this.page.waitForTimeout(500);
-      console.log('✅ Modal cerrado exitosamente');
+      console.log('✅ Modal cerrado');
     } catch (error) {
-      console.log('ℹ️ No hay modal para cerrar o ya está cerrado');
+      console.log('ℹ️ No hay modal o ya está cerrado');
     }
   }
 
-  /**
-   * Seleccionar la opción "Cédula" del combobox
-   * Usa múltiples estrategias para manejar diferentes implementaciones
-   */
+  // Selecciona la opción Cédula del combobox
   async seleccionarOpcionCedula() {
     try {
-      console.log('🔄 Seleccionando opción Cédula...');
+      console.log('Seleccionando Cédula...');
       
       // Esperar a que el combobox esté visible
       await this.comboboxCedula.waitFor({ state: 'visible', timeout: 5000 });
@@ -76,8 +61,8 @@ export class PaginaZapping extends BasePage {
         return;
       }
       
-      // Estrategia alternativa: Navegación con teclado
-      console.log('🔄 Intentando con navegación por teclado...');
+      // Si no funciona, intento con teclado
+      console.log('Intentando con teclado...');
       await this.comboboxCedula.press('ArrowDown');
       await this.page.waitForTimeout(300);
       await this.comboboxCedula.press('Enter');
@@ -89,32 +74,20 @@ export class PaginaZapping extends BasePage {
     }
   }
 
-  /**
-   * Llenar el número de cédula
-   */
   async llenarCedula(cedula: string) {
     await this.inputCedula.fill(cedula);
   }
 
-  /**
-   * Llenar el correo electrónico
-   */
   async llenarCorreo(correo: string) {
     await this.inputCorreo.fill(correo);
   }
 
-  /**
-   * Completar todo el formulario de Zapping
-   */
   async completarFormulario(cedula: string, correo: string) {
     await this.seleccionarOpcionCedula();
     await this.llenarCedula(cedula);
     await this.llenarCorreo(correo);
   }
 
-  /**
-   * Verificar que la página cargó correctamente
-   */
   async verificarPaginaCargada(): Promise<boolean> {
     try {
       await this.page.waitForLoadState('networkidle');
