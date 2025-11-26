@@ -1,0 +1,10 @@
+# Este archivo es para referencia. El proyecto usa Node.js/npm.
+# Las dependencias reales están en package.json
+
+# Para instalar las dependencias del proyecto:
+# npm install
+
+# Dependencias principales:
+# - @playwright/test: ^1.40.0
+# - @types/node: ^20.10.0
+# - typescript: ^5.3.0
