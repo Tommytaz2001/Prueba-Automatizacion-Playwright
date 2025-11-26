@@ -130,16 +130,6 @@ datosFormularioContacto: {
 - **Cédula**: Se genera automáticamente
 - **Correo**: Se genera con timestamp único
 
-
-## 🔗 Repositorio GitHub
-
-Este proyecto está configurado para subirse a GitHub:
-
-- **Usuario**: Tommytaz2001
-- **Email**: tommytas.apolinario@gmail.com
-- **Repositorio**: [Prueba-automatizacion-playwright](https://github.com/Tommytaz2001/Prueba-automatizacion-playwright)
-
-
 ## � Referencias y Documentación
 
 Este proyecto utiliza las siguientes tecnologías y recursos:
